@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "82537156934",
+    "firebase_url": "https://uts-map-lab-a5bbf-default-rtdb.firebaseio.com",
+    "project_id": "uts-map-lab-a5bbf",
+    "storage_bucket": "uts-map-lab-a5bbf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82537156934:android:0a9d0a71eba0fa37b4d547",
+        "android_client_info": {
+          "package_name": "com.example.uts_lab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGyoTXenAoKRje8dNFoQur1y5Mp87L6fY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

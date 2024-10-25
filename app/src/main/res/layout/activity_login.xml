@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".loginActivity"
+    android:background="@color/white">
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="60dp"/>
+
+    <!-- Subheader -->
+    <TextView
+        android:id="@+id/login_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your email, and password to log in"
+        android:textSize="16sp"
+        android:textColor="@color/greyblue"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="8dp"/>
+
+    <!-- Form input -->
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="Your Email"
+        android:inputType="textEmailAddress"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:textColor="@color/dark"/>
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Your Password"
+        android:inputType="textPassword"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:textColor="@color/black"/>
+
+    <!-- Forgot password text -->
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"
+        android:text="Forgot Password?"
+        android:textColor="@color/greyblue"
+        android:textSize="14sp"/>
+
+    <!-- Login button -->
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Log in"
+        android:textSize="18sp"
+        android:textColor="@color/yellow"
+        android:backgroundTint="@color/greyblue"
+        android:padding="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <!-- Bottom text: Sign up -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/signupRedirectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have an account already? Register"
+            android:textColor="@color/greyblue"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
