@@ -1,6 +1,5 @@
 package com.example.uts_lab
 
-
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -13,12 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
-import com.google.firebase.database.R
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
-
+import com.example.uts_lab.databinding.ActivityMainBinding
 
 data class ImageData(val imageUrl: String = "", val uploadTime: Long = 0)
 
@@ -33,16 +31,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val btnHistory: Button = findViewById(R.id.btn_history)
 
+        val btnHistory: Button = findViewById(R.id.btn_history)
         btnHistory.setOnClickListener {
-            // Pindah ke halaman HistoryActivity
             val intent = Intent(this, history_PageActivity::class.java)
             startActivity(intent)
         }
 
-
-        // Inisialisasi RecyclerView
+        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ImageAdapter(imageList)
@@ -51,12 +47,12 @@ class MainActivity : AppCompatActivity() {
         // Firebase Database Reference
         database = FirebaseDatabase.getInstance().getReference("uploads")
 
-        // Tombol untuk membuka kamera
+        // Button to open camera
         findViewById<Button>(R.id.btnOpenCamera).setOnClickListener {
             openCamera()
         }
 
-        // Fetch gambar dari Firebase Realtime Database
+        // Fetch images from Firebase Realtime Database
         fetchImagesFromDatabase()
     }
 
@@ -108,7 +104,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchImagesFromDatabase() {
-        // Mengambil data dari Firebase Realtime Database dan mengurutkannya berdasarkan timestamp (uploadTime)
         database.orderByChild("uploadTime").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 imageList.clear()
@@ -118,12 +113,10 @@ class MainActivity : AppCompatActivity() {
                         imageList.add(imageData)
                     }
                 }
-                // Balik list agar yang terbaru muncul paling atas
-                imageList.reverse()
+                imageList.reverse() // Reverse to show the latest first
                 adapter.notifyDataSetChanged()
 
-                // Log jumlah data yang diterima untuk memastikan data diambil
-                Log.d("Firebase", "Jumlah data: ${imageList.size}")
+                Log.d("Firebase", "Number of images: ${imageList.size}")
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -150,16 +143,12 @@ class ImageAdapter(private val imageList: List<ImageData>) :
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val imageData = imageList[position]
 
-        // Load image using Glide
         Glide.with(holder.itemView.context)
             .load(imageData.imageUrl)
             .into(holder.imageView)
 
-        // Format timestamp menjadi string tanggal
         val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val formattedDate = sdf.format(Date(imageData.uploadTime))
-
-        // Tampilkan tanggal yang telah diformat
         holder.textViewDate.text = formattedDate
     }
 
